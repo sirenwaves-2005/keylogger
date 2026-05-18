@@ -19,7 +19,7 @@ def log(message):
     line = f"[{timestamp}] {message}\n"
     print(line, end="")
     log_file.write(line)
-    log_file.flush()                #writing to disk immediately 
+    log_file.flush()                
 
 #--------------------Stop function----------------------------
 def stop_all():
@@ -36,7 +36,7 @@ def on_move(x,y):
     current_x = x
     current_y = y
 
-    log('Pointer moved to {0}'.format((current_x, current_y)))      #f'pointer moved to ({x},{y})'
+    log('Pointer moved to {0}'.format((current_x, current_y)))      
 
 
 def on_click(x, y, button, pressed):
@@ -46,7 +46,7 @@ def on_click(x, y, button, pressed):
         log('Latest live coordinates:{0}'.format((x,y)))
     
     
-def on_scroll(x, y, dx, dy):                #dy is my y coordinate scroll
+def on_scroll(x, y, dx, dy):                
     log('Scrolled {0} at {1}'.format('down' if dy < 0 else 'up', (x,y)))
 
 
@@ -58,9 +58,9 @@ def on_press(key):
         ctrl_pressed = True
 
     try:
-        key_name = key.char     #alphanumeric / symbol
+        key_name = key.char     
     except AttributeError:
-        key_name = str(key)         #special keys 
+        key_name = str(key)         
 
     log('Key pressed {0}'.format(key_name))
 
@@ -71,7 +71,7 @@ def on_press(key):
                 log('ctrl+k detected - stopping all listeners')
                 stop_all()
         except AttributeError:
-            pass                    #
+            pass                    
 
 def on_release(key):
     global ctrl_pressed
